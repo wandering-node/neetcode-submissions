@@ -1,0 +1,13 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def pow(x, n):
+            if n == 0:
+                return 1
+
+            half, carry = n // 2, n % 2
+            ans = pow(x, half)
+
+            return ans * ans * x if carry else ans * ans
+
+        tmp = pow(x, abs(n))
+        return tmp if n > 0 else 1 / tmp
